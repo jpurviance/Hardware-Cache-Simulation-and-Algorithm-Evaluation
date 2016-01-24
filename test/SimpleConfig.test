@@ -1,0 +1,8 @@
+{
+  "Caches":[
+    {"Name":"C1", "Memory Size":32, "Cache Type":"DirectMap"}
+  ],
+  "Simulations":[
+    {"Type":"QuickSortSim", "Runs":100, "Cache":"C1"}
+  ]
+}
