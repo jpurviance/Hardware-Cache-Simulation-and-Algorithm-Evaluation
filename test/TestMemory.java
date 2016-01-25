@@ -2,6 +2,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by John Purvaince on 12/25/15.
@@ -44,7 +48,6 @@ public class TestMemory {
 
         assertEquals(this.storage.get_at_address(18), 18);
         assertEquals(this.storage.no_analytics_get_from_cache(18), 18);
-        assertEquals(this.storage.no_analytics_get_from_RAM(22), 0);
     }
 
     /**
@@ -134,5 +137,63 @@ public class TestMemory {
         }
     }
 
+    /**
+     * Test the cache with 10 random writes with random values. No two address are duplicated.
+     * TODO This test fails. It needs to not fail.
+     */
+    @Test
+    public void test_fully_associative_cache_random_writes(){
+        this.fully_associative_setup();
+        ArrayList<Integer> values = new ArrayList<>();
+        ArrayList<Integer> addresses = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < 10; i++){
+            Integer next_value;
+            do {
+                next_value = new Integer(rand.nextInt(101));
+            } while (values.contains(next_value));
+            values.add(next_value);
 
+            Integer next_address;
+            do {
+                next_address = new Integer(rand.nextInt(32));
+            } while (addresses.contains(next_address));
+            addresses.add(next_address);
+        }
+
+        for (int i = 0; i < 10; i++){
+            boolean ret = this.storage.set_at_address(addresses.get(i).intValue(), values.get(i).intValue());
+            assertTrue(ret);
+        }
+        this.storage.flush_caches_to_ram();
+
+        for (int i = 0; i < this.storage.get_size(); i++){
+            if (addresses.contains(new Integer(i))){
+                int index = addresses.indexOf(new Integer(i));
+                assertEquals(this.storage.get_at_address(i), values.get(index).intValue());
+            } else {
+                assertEquals(this.storage.get_at_address(i), i);
+            }
+        }
+    }
+
+    /**
+     * Currently all associative caches are not working correctly. This test method identifies an instance where it fails.
+     * TODO this test fails, Need to fix issue that is causing test to fail. 
+     */
+    @Test
+    public void test_fully_associative_cache_writes(){
+        this.fully_associative_setup();
+        int[] addresses = {1, 2, 3, 4, 14, 28, 17, 12, 22, 31, 30, 23, 6, 24, 5, 27, 19, 16, 18};
+        int[] values = {200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218};
+        assertEquals(addresses.length, values.length);
+        for (int i = 0; i < addresses.length; i++){
+            //TODO this test fails on writing 201 to address 2.
+            this.storage.set_at_address(addresses[i], values[i]);
+        }
+        for (int i = 0; i < addresses.length; i++){
+            // TODO will fail when reading from address 2.
+            assertEquals(this.storage.get_at_address(addresses[i]), values[i]);
+        }
+    }
 }

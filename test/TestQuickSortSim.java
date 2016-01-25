@@ -12,7 +12,7 @@ public class TestQuickSortSim {
     @Before
     public void setUp(){
         this.test_sim = new QuickSortSim();
-        this.test_memory = new Memory(CacheType.FULLY_ASSOCIATIVE);
+        this.test_memory = new Memory(CacheType.DIRECT_MAP);
     }
 
 
