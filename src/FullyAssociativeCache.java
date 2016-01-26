@@ -66,6 +66,15 @@ public class FullyAssociativeCache extends AssociativeCache {
         super.set_data(mem_address, data);
     }
 
+    //TODO doc
+    @Override
+    public int write_back_get_data(int mem_address){
+        this.total_cache_accesses++;
+        this.total_cache_reads++;
+        return super.write_back_get_data(mem_address);
+    }
+
+
     /**
      * USERS ARE EXPECTED TO VALIDATE MEMORY ADDRESS AND CHECK TO SEE IF THE VALUE IS IN THE CACHE.
      *

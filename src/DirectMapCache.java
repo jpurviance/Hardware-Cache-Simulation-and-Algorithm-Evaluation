@@ -53,6 +53,12 @@ public class DirectMapCache implements Cache {
         return this.size;
     }
 
+    //TODO doc
+    @Override
+    public int write_back_get_data(int mem_address) {
+        return this.get_data(mem_address);
+    }
+
     /**
      * Computes an integer index that a memory address will map to in the cache. Does not validate if the memory address is in the cache.
      *

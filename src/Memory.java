@@ -107,6 +107,11 @@ public class Memory {
 
     }
 
+    // TODO remove after testing
+    public String cache_to_string(){
+       return this.cache.toString();
+    }
+
 
     /**
      * Set data in the system memory, will write values into cache. If no space is available in memory,
@@ -128,7 +133,8 @@ public class Memory {
             } else { // we assume that we need to do a write back
                 try {
                     int write_back_address = this.cache.get_write_back_address(address);
-                    this.ram.set_at_address(write_back_address, this.cache.get_data(write_back_address));
+                    //this.ram.set_at_address(write_back_address, this.cache.get_data(write_back_address)); //TODO this need a special write back method.
+                    this.ram.set_at_address(write_back_address, this.cache.write_back_get_data(write_back_address));
                     this.cache.set_data(address, value);
                     this.total_cache_write_backs++;
                     this.total_cache_misses++;

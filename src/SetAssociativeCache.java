@@ -138,6 +138,13 @@ public class SetAssociativeCache implements Cache { // uses least recently used 
         return this.sets[this.compute_index(mem_address)].get_data(mem_address);
     }
 
+    // TODO doc
+    public int write_back_get_data(int mem_address){
+        this.total_cache_accesses++;
+        this.total_cache_reads++;
+        return this.sets[this.compute_index(mem_address)].write_back_get_data(mem_address);
+    }
+
     /**
      * Address of value that is to be written back to ram.
      *

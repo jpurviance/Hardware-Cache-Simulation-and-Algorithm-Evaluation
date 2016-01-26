@@ -25,5 +25,7 @@ public interface Cache {
 
     int size();
 
+    int write_back_get_data(int mem_address);
+
 
 }

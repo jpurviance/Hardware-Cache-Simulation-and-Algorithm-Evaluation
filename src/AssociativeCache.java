@@ -26,6 +26,21 @@ public class AssociativeCache implements Cache {
         this.size = size;
     }
 
+    @Override
+    //TODO complete for testing.
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        CacheWordNode node = this.head;
+        int i = 0;
+        while (node != null) {
+            str.append("Node " + i + " is it valid: " + node.is_valid() + ", its mem: " + node.get_mem_address() + " its data: " + node.get_data() + "\n");
+            i++;
+            node = node.get_next_word();
+        }
+        return str.toString();
+    }
+
+
     /*
     This class is never directly instantiated, children will overwrite this method
      */
@@ -118,6 +133,18 @@ public class AssociativeCache implements Cache {
 
     }
 
+    //TODO test and doc.
+    public int write_back_get_data(int mem_address){
+        CacheWordNode current = this.head;
+
+        do {
+            current = current.get_next_word();
+
+        } while (current.get_next_word() != this.tail && this.cache_word_not_found(current, mem_address));
+        return current.get_data();
+
+    }
+
     /**
      * Size of cache
      *
@@ -153,7 +180,7 @@ public class AssociativeCache implements Cache {
     @Override
     public void set_data(int mem_address, int data) {
         CacheWordNode current = this.head.get_next_word();
-
+        //TODO this top loop could be skipped right over with testing if the value is in the cache.
         // Look to see if the memory address is already being cached.
         while (current != this.tail) {
             if (current.get_mem_address() == mem_address && current.is_valid()) {
