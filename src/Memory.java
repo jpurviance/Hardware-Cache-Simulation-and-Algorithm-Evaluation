@@ -94,7 +94,8 @@ public class Memory {
             this.total_cache_read_misses++;
             try {
                 int write_back_address = this.cache.get_write_back_address(address);
-                int write_back_data = this.cache.get_data(write_back_address);
+                //int write_back_data = this.cache.get_data(write_back_address);
+                int write_back_data = this.cache.write_back_get_data(write_back_address);
                 this.ram.set_at_address(write_back_address, write_back_data);
                 this.cache.set_data(address, requested);
             } catch (CacheColdMissException e) { // Did not need to remove a value from the cache, there is an open spot in the cache.
@@ -160,6 +161,11 @@ public class Memory {
      */
     public int get_size() {
         return this.size;
+    }
+
+    // TODO for testing, decide if keep.
+    public boolean is_address_in_cache(int mem_address){
+        return this.cache.is_in_cache(mem_address);
     }
 
     /**

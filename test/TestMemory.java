@@ -199,9 +199,9 @@ public class TestMemory {
             this.storage.set_at_address(addresses[i], values[i]);
         }
 
-        System.out.println(storage.cache_to_string());
+        //System.out.println(storage.cache_to_string());
 
-        this.storage.flush_caches_to_ram(); // TODO why does this flush fix the cache?
+        //this.storage.flush_caches_to_ram(); // TODO why does this flush fix the cache?
         for (int i = 0; i < addresses.length; i++){
             // TODO will fail when reading from address 2.
             int a = addresses[i]; // TODO remove
