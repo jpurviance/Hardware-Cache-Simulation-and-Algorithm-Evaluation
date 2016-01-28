@@ -12,12 +12,52 @@ public class TestQuickSortSim {
     @Before
     public void setUp(){
         this.test_sim = new QuickSortSim();
+        //this.test_memory = new Memory(CacheType.DIRECT_MAP);
+    }
+
+    public void direct_map_setup(){
         this.test_memory = new Memory(CacheType.DIRECT_MAP);
     }
 
+    public void fully_associative_setup(){
+        this.test_memory = new Memory(CacheType.FULLY_ASSOCIATIVE);
+    }
+
+    public void set_associative_setup(){
+        this.test_memory = new Memory(CacheType.SET_ASSOCIATIVE);
+    }
 
     @Test
     public void test_prime(){
+        this.direct_map_setup();
+        this.prime();
+        this.fully_associative_setup();
+        this.prime();
+        this.set_associative_setup();
+        this.prime();
+    }
+
+    @Test
+    public void test_sort_ordering(){
+        this.direct_map_setup();
+        this.sort_ordering();
+        this.fully_associative_setup();
+        this.sort_ordering();
+        this.set_associative_setup();
+        this.sort_ordering();
+    }
+
+    @Test
+    public void test_sort_quantity_preservation(){
+        this.direct_map_setup();
+        this.sort_quantity_preservation();
+        this.fully_associative_setup();
+        this.sort_quantity_preservation();
+        this.set_associative_setup();
+        this.sort_quantity_preservation();
+    }
+
+    private void prime(){
         for (int i = 0; i < this.test_memory.get_size(); i++){
             this.test_memory.no_analytics_set_at_address_in_RAM(i, -1); // should be set at mem address.
         }
@@ -31,8 +71,7 @@ public class TestQuickSortSim {
         }
     }
 
-    @Test
-    public void test_sort_ordering(){
+    private void sort_ordering(){
         test_sim.prime(this.test_memory);
         test_sim.run(this.test_memory);
 
@@ -46,8 +85,7 @@ public class TestQuickSortSim {
         }
     }
 
-    @Test
-    public void test_sort_quantity_preservation(){
+    private void sort_quantity_preservation(){
         this.test_sim.prime(this.test_memory);
         int[] pre_data = new int[101];
         int[] post_data = new int[101];
