@@ -139,7 +139,6 @@ public class TestMemory {
 
     /**
      * Test the cache with 10 random writes with random values. No two address are duplicated.
-     * TODO This test fails. It needs to not fail.
      */
     @Test
     public void test_fully_associative_cache_random_writes(){
@@ -178,8 +177,7 @@ public class TestMemory {
     }
 
     /**
-     * Currently all associative caches are not working correctly. This test method identifies an instance where it fails.
-     * TODO should not need to flush cache for test to pass.
+     *
      */
     @Test
     public void test_fully_associative_cache_writes(){
@@ -195,17 +193,10 @@ public class TestMemory {
 
         assertEquals(addresses.length, values.length);
         for (int i = 0; i < addresses.length; i++){
-            //TODO this test fails on writing 201 to address 2.
             this.storage.set_at_address(addresses[i], values[i]);
         }
 
-        //System.out.println(storage.cache_to_string());
-
-        //this.storage.flush_caches_to_ram(); // TODO why does this flush fix the cache?
         for (int i = 0; i < addresses.length; i++){
-            // TODO will fail when reading from address 2.
-            int a = addresses[i]; // TODO remove
-            int b = values[i]; // TODO remove
             assertEquals(this.storage.get_at_address(addresses[i]), values[i]);
         }
     }

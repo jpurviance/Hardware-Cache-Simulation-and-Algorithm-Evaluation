@@ -3,6 +3,6 @@
     {"Name":"C1", "Memory Size":32, "Cache Type":"DirectMap"}
   ],
   "Simulations":[
-    {"Type":"QuickSortSim", "Runs":100, "Cache":"C1"}
+    {"Type":"BinarySearchSim", "Runs":1, "Cache":"C1"}
   ]
 }

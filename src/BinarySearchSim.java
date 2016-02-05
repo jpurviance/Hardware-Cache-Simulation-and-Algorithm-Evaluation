@@ -1,36 +1,37 @@
 import java.util.Random;
 
 /**
- * TODO class not ready to simulation usage.
  * Created by John Purviance on 12/22/15.
  * Simulates preforming a binary search over a cache compared.
- * TODO: need to be able to take in user dictated search values.
  */
-public class BinarySearchSim implements SimulationJob { // TODO finish implementing run and test class.
-    private Memory storage;
+public class BinarySearchSim implements SimulationJob {
+    //private Memory storage;
 
-    public BinarySearchSim() {
-        this.storage = new Memory(CacheType.DIRECT_MAP); // TODO this class should take in a memory configuration to run on.
-    }
+    public BinarySearchSim() {}
 
     @Override
-    public void run(Memory storage) {
-        // TODO when finished this should be able to search for user dictated values.
-        this.search(10, 0, this.storage.get_size() - 1);
+    public void run(Memory storage){
+        Random number_generator = new Random();
+        this.search(storage, number_generator.nextInt(32), 0, storage.get_size() - 1); // search between 0 and 31
     }
 
-    private int search(int find, int low_index, int high_index) {
+    public int run(Memory storage, int search){
+        return this.search(storage, search, 0, storage.get_size() - 1);
+    }
+
+
+    private int search(Memory storage, int find, int low_index, int high_index) {
         if (high_index < low_index) {
             return -1;
         } else {
             int compare_index = (low_index + high_index) / 2;
-            int compare_to = this.storage.get_at_address(compare_index);
+            int compare_to = storage.get_at_address(compare_index);
             if (find == compare_to) {
                 return compare_index;
             } else if (find < compare_to) {
-                return this.search(find, low_index, compare_index - 1);
+                return this.search(storage, find, low_index, compare_index - 1);
             } else {
-                return this.search(find, compare_index + 1, high_index);
+                return this.search(storage, find, compare_index + 1, high_index);
             }
         }
     }
