@@ -110,7 +110,7 @@ public class RunSimulation {
                 System.out.println(compute_utilization.compute_cache_average_cold_write_hits());
                 System.out.println(compute_utilization.compute_cache_min_write_backs());
                 System.out.println(compute_utilization.compute_cache_max_write_backs());
-                System.out.println(compute_utilization.compute_cache_average_write_backs());
+                System.out.println(compute_utilization.compute_cache_average_write_backs()+"\n");
 
             }
         } catch (InvalidConfigurationException e) {
