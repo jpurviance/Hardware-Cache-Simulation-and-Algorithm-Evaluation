@@ -5,7 +5,7 @@
 public enum RunnableSim {
     BubbleSort, BinarySearch,
     HeapSort, InsertionSort,
-    LinearRead, QuickSort;
+    LinearSearch, QuickSort;
 
     /**
      * String representation of the enum.
@@ -22,8 +22,8 @@ public enum RunnableSim {
                 return "Heap Sort";
             case InsertionSort:
                 return "Insertion Sort";
-            case LinearRead:
-                return "linear Read";
+            case LinearSearch:
+                return "Linear Search";
             case QuickSort:
                 return "Quick Sort";
         }
