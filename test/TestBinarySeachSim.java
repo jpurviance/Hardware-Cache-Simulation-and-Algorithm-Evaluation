@@ -32,7 +32,7 @@ public class TestBinarySeachSim {
 
 
     @Test
-    public void test_search_random_select(){
+    public void test_search(){
         for (int i = 0; i < this.test_memory.get_size(); i++){
             this.test_memory.no_analytics_set_at_address_in_RAM(i, i);
         }
