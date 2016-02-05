@@ -27,7 +27,6 @@ public class AssociativeCache implements Cache {
     }
 
     @Override
-    //TODO complete for testing.
     public String toString(){
         StringBuilder str = new StringBuilder();
         CacheWordNode node = this.head;
@@ -111,8 +110,7 @@ public class AssociativeCache implements Cache {
      * @return The data being cached for the memory address.
      */
     @Override
-    public int get_data(int mem_address) { // TODO have all usages of this method check for data in cache.
-        // TODO test further
+    public int get_data(int mem_address) {
         CacheWordNode current = this.head;
 
         do {

@@ -2,17 +2,16 @@ import java.util.Random;
 
 /**
  * Created by John Purviance on 12/22/15.
- * Simulates preforming a binary search over a cache compared.
+ * Simulates preforming a binary search over the system memory.
  */
 public class BinarySearchSim implements SimulationJob {
-    //private Memory storage;
 
     public BinarySearchSim() {}
 
     @Override
     public void run(Memory storage){
         Random number_generator = new Random();
-        this.search(storage, number_generator.nextInt(32), 0, storage.get_size() - 1); // search between 0 and 31
+        this.search(storage, number_generator.nextInt(1000), 0, storage.get_size() - 1); // search between 0 and 999
     }
 
     public int run(Memory storage, int search){

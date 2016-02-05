@@ -27,8 +27,8 @@ public class RunSimulation {
                     case InsertionSort:
                         test_sim = new InsertionSortSim();
                         break;
-                    case LinearRead:
-                        test_sim = new LinearReadSim();
+                    case LinearSearch:
+                        test_sim = new LinearSearchSim();
                         break;
                     case QuickSort:
                         test_sim = new QuickSortSim();

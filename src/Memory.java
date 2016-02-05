@@ -108,7 +108,6 @@ public class Memory {
 
     }
 
-    // TODO remove after testing
     public String cache_to_string(){
        return this.cache.toString();
     }
@@ -123,7 +122,6 @@ public class Memory {
      * @return if the data was set
      */
     public boolean set_at_address(int address, int value) { // valiate you own address.
-        // TODO clean up method and add the checking for if address are valid.
         if (address >= 0 && address < this.size) {
             this.total_writes++;
             this.total_accesses++;
@@ -134,7 +132,6 @@ public class Memory {
             } else { // we assume that we need to do a write back
                 try {
                     int write_back_address = this.cache.get_write_back_address(address);
-                    //this.ram.set_at_address(write_back_address, this.cache.get_data(write_back_address)); //TODO this need a special write back method.
                     this.ram.set_at_address(write_back_address, this.cache.write_back_get_data(write_back_address));
                     this.cache.set_data(address, value);
                     this.total_cache_write_backs++;
@@ -163,7 +160,6 @@ public class Memory {
         return this.size;
     }
 
-    // TODO for testing, decide if keep.
     public boolean is_address_in_cache(int mem_address){
         return this.cache.is_in_cache(mem_address);
     }

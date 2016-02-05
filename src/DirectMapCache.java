@@ -231,12 +231,13 @@ public class DirectMapCache implements Cache {
 
     /**
      * USERS ARE EXPECTED TO VALIDATE ADDRESS
+     * USERS ARE EXECTED TO VERIFY THAT DATA IS IN CACHE
      * Use validate_address(int mem_address) to determine if the address is valid.
      *
      * @param mem_address the address to get cached data from.
      * @return the value at a cached memory address.
      */
-    public int get_data(int mem_address) { // TODO all get_data usages should have is_in_cache checked.
+    public int get_data(int mem_address) {
         this.total_cache_accesses++;
         this.total_cache_reads++;
         return this.data[this.compute_index(mem_address)];

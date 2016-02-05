@@ -123,7 +123,7 @@ public class ConfigParser {
             case "HeapSortSim":
                 return RunnableSim.HeapSort;
             case "LinearReadSim":
-                return RunnableSim.LinearRead;
+                return RunnableSim.LinearSearch;
             case "QuickSortSim":
                 return RunnableSim.QuickSort;
             default:
