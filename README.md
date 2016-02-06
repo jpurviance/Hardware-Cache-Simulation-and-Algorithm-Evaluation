@@ -13,8 +13,15 @@ Advantages: Fast read and write times.
 Disadvantages: Values are evicted as soon as another address that hashes to the same index is to be cached. 
 
 ### Fully Associative:
-Every address in stored in the same cache set. Multiple addresses that would hash to the same index in a direct map cache can be stored at the same time in the cache. Advantages: Cache values are not immediately evicted from the cache when new values need to be stored. Disadvantages: Searching through cache sets is more costly then direct hash implementations. 
+Every address is stored in the same cache set. Multiple addresses that would hash to the same index in a direct map cache can be stored at the same time in the cache. 
+
+Advantages: Cache values are not immediately evicted from the cache when new values need to be stored. 
+
+Disadvantages: Searching through cache sets is more costly then direct hash implementations. 
 
 ### Set Associative:
-Address are hashed into sets where multiple memory address values are stored. Read operations are less costly then Full Associative caches due to the smaller pool of cache words. 
-Advantages: Values are evicted from the cache less than direct map caches. Read operations take less time then Fully associative caches. Disadvantages:  Direct map caches require less time to retrieve cached values. Fully associative caches evict values less than set associative caches. 
+Addresses are hashed into sets where multiple memory address values are stored. Read operations are less costly then Full Associative caches due to the smaller pool of cache words. 
+
+Advantages: Values are evicted from the cache less than direct map caches. Read operations take less time then Fully Associative caches. 
+
+Disadvantages:  Direct map caches require less time to retrieve cached values. Fully Associative caches evict values less than Set Associative caches. 
