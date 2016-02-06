@@ -5,7 +5,11 @@ Hardware caches accelerate execution time by reducing the total amount of time t
 ## Cache Information
 ### Direct Map:
 Each memory address can be stored in only one location of the cache. Addresses are hashed to a cache index. Old values are evicted ass soon as a new value needs that cache index. 
+
+
 Advantages: Fast read and write times.
+
+
 Disadvantages: Values are evicted as soon as another address that hashes to the same index is to be cached. 
 
 ### Fully Associative:
