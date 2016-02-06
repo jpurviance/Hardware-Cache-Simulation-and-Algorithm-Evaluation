@@ -25,3 +25,6 @@ Addresses are hashed into sets where multiple memory address values are stored. 
 Advantages: Values are evicted from the cache less than direct map caches. Read operations take less time then Fully Associative caches. 
 
 Disadvantages:  Direct map caches require less time to retrieve cached values. Fully Associative caches evict values less than Set Associative caches. 
+
+#### Required Resources:
+https://github.com/stleary/JSON-java
