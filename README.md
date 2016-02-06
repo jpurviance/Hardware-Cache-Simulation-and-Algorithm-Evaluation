@@ -1,4 +1,4 @@
-# Hardware-Cache-Simulation-and-Algorithm-Evaluation
+# Hardware Cache Simulation and Algorithm Evaluation (HCSAE)
 
 Hardware caches accelerate execution time by reducing the total amount of time that processors wait while data is being transferred from system memory to the registers. Fewer clock cycles are required to access a value stored in system cache compared the much larger system memory. Hardware Cache Simulation and Algorithm Evaluation (HCSAE) simulates several cache structures with a write-through policy.  Four sorting algorithms and two search algorithms are provided as simulation jobs for testing cache efficiency and cache safe code. 
 
