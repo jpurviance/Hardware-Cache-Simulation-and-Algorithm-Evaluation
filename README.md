@@ -26,5 +26,24 @@ Advantages: Values are evicted from the cache less than direct map caches. Read 
 
 Disadvantages:  Direct map caches require less time to retrieve cached values. Fully Associative caches evict values less than Set Associative caches. 
 
+### Config File
+HCSAE takes a text file as a command line argument. The only text in the file should be a json object for the application to run:
+```json
+{
+    "Caches":[
+        {{"Name":"C1", "Memory Size":32, "Cache Type":"cache_type"}
+    ],
+    "Simulations":[
+        {"Type":"sim_type", "Runs":#, "Cache":"C1"},
+    ]
+}
+``` 
+Where sim_type is from: InsertionSortSim, BubbleSortSim, BinarySearchSim, HeapSortSim, LinearReadSim and QuickSortSim
+Where cache_type is from: DirectMap, SetAssociative and FullyAssociative
+Where # is the number of runs for each simulation. 
+    
+
+
+
 #### Required Resources:
 https://github.com/stleary/JSON-java
