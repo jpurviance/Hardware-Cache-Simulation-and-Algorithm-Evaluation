@@ -31,16 +31,18 @@ HCSAE takes a text file as a command line argument. The only text in the file sh
 ```json
 {
     "Caches":[
-        {{"Name":"C1", "Memory Size":32, "Cache Type":"cache_type"}
+        {"Name":"C1", "Memory Size":32, "Cache Type":"cache_type"}
     ],
     "Simulations":[
-        {"Type":"sim_type", "Runs":#, "Cache":"C1"},
+        {"Type":"sim_type", "Runs":"#", "Cache":"C1"},
     ]
 }
 ``` 
 Where sim_type is from: InsertionSortSim, BubbleSortSim, BinarySearchSim, HeapSortSim, LinearReadSim and QuickSortSim
+
 Where cache_type is from: DirectMap, SetAssociative and FullyAssociative
-Where # is the number of runs for each simulation. 
+
+Where "#" is the number of runs for each simulation (remove quotes from number in actual file, ex "Runs":10)
     
 
 
